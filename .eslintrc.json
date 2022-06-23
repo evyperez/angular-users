@@ -1,50 +1,64 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "overrides": [
-    {
-      "files": [
-        "*.ts"
-      ],
-      "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
-        "createDefaultProgram": true
+      {
+          "files": ["*.ts"],
+          "parserOptions": {
+              "project": ["tsconfig.json", "e2e/tsconfig.json"],
+              "createDefaultProgram": true
+          },
+          "extends": [
+              "plugin:@angular-eslint/ng-cli-compat",
+              "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+              "plugin:@angular-eslint/template/process-inline-templates"
+          ],
+          "rules": {
+              "@angular-eslint/component-selector": [
+                  "error",
+                  {
+                      "type": "element",
+                      "prefix": "app",
+                      "style": "kebab-case"
+                  }
+              ],
+              "@typescript-eslint/naming-convention": [
+                  "error",
+                  {
+                      "selector": "enumMember",
+                      "format": ["UPPER_CASE", "camelCase"]
+                  }
+              ],
+              "@angular-eslint/directive-selector": [
+                  "error",
+                  {
+                      "type": "attribute",
+                      "prefix": "app",
+                      "style": "camelCase"
+                  }
+              ],
+              "@typescript-eslint/consistent-type-definitions": "error",
+              "id-blacklist": ["off"],
+              // note you must disable the base rule as it can report incorrect errors
+              "no-shadow": "off",
+              "@typescript-eslint/no-shadow": ["error"],
+              "@typescript-eslint/explicit-member-accessibility": [
+                  "off",
+                  {
+                      "accessibility": "explicit"
+                  }
+              ],
+              "@typescript-eslint/no-use-before-define": "error",
+              "arrow-parens": ["off", "always"],
+              "brace-style": ["error", "1tbs"],
+              "import/order": "off",
+              "@typescript-eslint/no-explicit-any": "error"
+          }
       },
-      "extends": [
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
-      "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ]
+      {
+          "files": ["*.html"],
+          "extends": ["plugin:@angular-eslint/template/recommended"],
+          "rules": {}
       }
-    },
-    {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
-      "rules": {}
-    }
   ]
 }
