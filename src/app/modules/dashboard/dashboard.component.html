@@ -1,0 +1,4 @@
+<section class="dashboard">
+    <app-search (sendResult)="setResult($event)" [result]="result"></app-search>
+    <app-results [result]="result"></app-results>
+</section>

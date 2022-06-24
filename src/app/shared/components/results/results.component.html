@@ -1,0 +1,15 @@
+<section *ngIf="result" class="results">
+  <div class="container">
+    <div *ngFor="let item of result.items" class="result-item">
+      <div>
+        <img title="avatar" src="{{item?.avatar_url}}" class="avatar" alt="avatar {{item?.login}}">
+      </div>
+      <div>
+        <h2 title="login"><strong>{{item?.login}}</strong></h2>
+      </div>
+      <div>
+        <p title="type">{{item?.type}}</p>
+      </div>
+    </div>
+  </div>
+</section>

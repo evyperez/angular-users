@@ -1,0 +1,85 @@
+@use 'sass:map';
+
+@use '../../../../stylesheets/abstracts' as my;
+
+.container {
+  padding-top: my.$leading * 1rem;
+  padding-bottom: my.$leading * 1rem;
+}
+
+.container--narrow {
+  padding-top: my.$leading * 2rem;
+  padding-bottom: my.$leading * 2rem;
+
+  @media screen and (min-width: #{map.get(my.$breakpoints, 'toggle-table-layout')}) {
+    padding-top: my.$leading * 4rem;
+    padding-bottom: my.$leading * 4rem;
+  }
+}
+
+.search-group {
+  position: relative;
+  max-width: my.$max-width--narrow;
+}
+
+.search--result {
+  & .search-group {
+    position: relative;
+    display: grid;
+
+    grid-template-columns: 100px 1fr auto;
+    align-items: center;
+
+    column-gap: my.$gutter * 0.25;
+
+    .search__image {
+      height: 60px;
+      cursor: pointer;
+    }
+  }
+}
+
+.search__image {
+  width: 100%;
+  height: 160px;
+  // position: absolute;
+  // bottom: 73px;
+  // z-index: 1;
+  // left: 50%;
+  // transform: translateX(-50%);
+  margin: auto;
+  object-fit: contain;
+}
+
+.input-group {
+  position: relative;
+}
+
+.search__buttons {
+  display: inline;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  right: my.$gutter * 1;
+  transform: translateY(-50%);
+
+
+  button {
+    background: transparent;
+    height: unset;
+    width: 28px;
+    padding: 0;
+    min-width: unset;
+    margin-right: my.$leading * 0.25rem;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:focus,
+    &:active,
+    &:hover {
+      background: transparent;
+    }
+  }
+}
