@@ -1,0 +1,245 @@
+@use 'sass:color';
+
+@use '../layout/form';
+@use '../abstracts' as my;
+
+/* text inputs
+---------------------------------------------------------------------------- */
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. add some space before text
+ */
+%text-field-reset {
+  @extend %os-element-reset;
+
+  box-sizing: inherit;
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  text-indent: my.$gutter;
+
+  width: 100%;
+  height: my.$gutter * 2;
+  padding: my.$gutter * 0.5 0;
+  margin: 0; // vertical margins break floating labels
+
+  color: my.palette('github', 'dark-gray');
+
+  cursor: text;
+
+  background-color: my.palette('github', 'white');
+  border: solid my.$stroke my.palette('border');
+
+  appearance: none; /* 1 */
+
+  &:placeholder-shown ~ label {
+    color: my.palette('neutral', 'base');
+
+    pointer-events: none;
+
+    transform: translateY(calc(100% + #{my.$gutter * 0.5}));
+  }
+
+  &:focus ~ label,
+  &:hover ~ label,
+  ~ label:hover,
+  ~ label {
+    display: block;
+
+    order: -1;
+
+    max-width: 100%;
+    min-height: my.$gutter; // field height - padding
+    margin-right: my.$gutter * 0.5;
+    margin-left: my.$gutter * 0.5;
+    overflow: hidden;
+
+    font-size: smaller;
+    color: my.palette('text', 'faded');
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    pointer-events: auto;
+
+    transition-timing-function: ease-out;
+    transition-duration: 0.25s;
+    transition-property: color, transform, opacity;
+    transform: translate(0, 0);
+  }
+
+  &:focus ~ label,
+  &:hover ~ label,
+  ~ label:hover {
+    color: my.palette('text', 'title');
+
+    transform: translate(0, 0);
+  }
+
+  &:-moz-ui-invalid {
+    border-radius: my.$rounded-corner;
+    box-shadow: none;
+  }
+
+  &:invalid {
+    border-radius: my.$rounded-corner;
+    box-shadow: 0 0 5px my.palette('feedback', 'danger');
+  }
+
+  &.error:invalid {
+    border-color: my.palette('feedback', 'danger');
+    box-shadow: 0 0 0 4px color.scale(my.palette('feedback', 'danger'), $alpha: 50%);
+  }
+
+  &:focus {
+    @include my.focused;
+  }
+
+  &:focus:required:invalid {
+  }
+
+  ~ small {
+  }
+
+  &:read-only {
+    color: my.palette('disabled', 'foreground');
+
+    cursor: default;
+
+    background-color: my.palette('disabled', 'background');
+  }
+}
+
+[type='email'] {
+  @extend %text-field-reset;
+}
+
+[type='email'][multiple] {
+}
+
+[type='number'] {
+  @extend %text-field-reset;
+
+  appearance: none;
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  margin: 0; // Apparently some margin are still there even though it's hidden
+
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none;
+}
+
+[type='password'] {
+  @extend %text-field-reset;
+}
+
+/**
+ * Jakob Nielsen survey suggests that 27 characters could be good for search fields. They said that around 9 in 10 queries will fit in that space.
+ *
+ * 1. Correct the outline style in Safari.
+ * 2. iPhone bug displaying search input with rounded angles before entering into the field
+ */
+[type='search'] {
+  @extend %text-field-reset;
+
+  outline-offset: -2px; /* 1 */
+
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none; /* 2 */
+  position: relative;
+
+  border-radius: my.$form-rounded-corner;
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    mask-image: url('/assets/images/search.svg');
+    mask-position: center;
+    mask-size: 16px auto;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    left: 0;
+  }
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+[type='search']::-webkit-search-cancel-button,
+[type='search']::-webkit-search-decoration {
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-appearance: none;
+}
+
+[type='tel'] {
+  @extend %text-field-reset;
+}
+
+[type='text'] {
+  @extend %text-field-reset;
+}
+
+[type='url'] {
+  @extend %text-field-reset;
+}
+
+[type='date'] {
+  @extend %text-field-reset;
+
+  line-height: 1;
+}
+
+/* text areas
+---------------------------------------------------------------------------- */
+
+/*
+ * 1. Removes default vertical scrollbar in IE6/7/8/9
+ * 2. Improves readability and alignment in all browsers
+ * sobral, veja o 2!
+ */
+textarea {
+  @extend %text-field-reset;
+
+  align-items: flex-start;
+
+  height: my.$gutter * 8;
+  overflow: auto; /* 1 */
+
+  line-height: inherit;
+  vertical-align: top;
+
+  cursor: text;
+  resize: vertical;
+}
+
+.char-counter {
+  display: block;
+
+  padding: 0.25em;
+  margin-right: 0;
+  margin-left: auto;
+
+  font-size: smaller;
+
+  pointer-events: none;
+
+  :invalid ~ & > output {
+    color: my.palette('feedback', 'danger');
+  }
+
+  > output {
+    color: my.palette('feedback', 'success');
+  }
+}
