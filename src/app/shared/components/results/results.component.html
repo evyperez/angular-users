@@ -1,6 +1,6 @@
 <section *ngIf="result" class="results">
   <div class="container">
-    <h2 *ngIf="result?.total_count === 0" class="text-align--center">
+    <h2 *ngIf="result?.total_count === 0 || result?.items?.length === 0" class="text-align--center">
       <strong>
         Your search did not match any user.
       </strong>
