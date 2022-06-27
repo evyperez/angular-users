@@ -4,20 +4,18 @@ import { Result } from 'src/app/models/result.model';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   result: Result;
   hasResult: boolean;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  setResult(event){
+  setResult(event) {
     this.result = event;
     this.hasResult = true;
   }
-
 }

@@ -9,7 +9,7 @@
 $_fonts-list: (
   title-font-stack: $title-font-stack,
   text-font-stack: $text-font-stack,
-  code-font-stack: $code-font-stack
+  code-font-stack: $code-font-stack,
 );
 
 @each $k, $v in $_fonts-list {
@@ -24,7 +24,14 @@ $_fonts-list: (
     }
   }
 
-  @include utilities.add('fonts', $k, ('name': $name, 'stack': $stack));
+  @include utilities.add(
+    'fonts',
+    $k,
+    (
+      'name': $name,
+      'stack': $stack,
+    )
+  );
 }
 
 @each $k1, $v1 in $palette {

@@ -13,7 +13,7 @@
     "lint:es": "ng lint",
     "lint-staged": "ng lint $(git diff --name-only --cached | grep -E '\\.ts|\\.html' | sed 's/^/ --lint-file-patterns /')",
     "lint:fix": "ng lint --fix",
-    "prettier:check": "./node_modules/.bin/prettier --check \"src/app/**/*.scss\"",
+    "prettier:check": "prettier --check \"src/app/**/*.scss\"",
     "prettier:write": "prettier --write ."
   },
   "private": true,

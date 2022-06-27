@@ -1,5 +1,5 @@
 @use '../layout/form';
-@use '../abstracts'as my;
+@use '../abstracts' as my;
 
 /* buttons
 ---------------------------------------------------------------------------- */
@@ -49,8 +49,8 @@
   appearance: button;
   /* 1 */
 
-  [role='group']>&,
-  fieldset>& {
+  [role='group'] > &,
+  fieldset > & {
     margin-right: my.$gutter * 0.5;
 
     &:only-child {
@@ -77,7 +77,8 @@
     }
   }
 
-  &:active {}
+  &:active {
+  }
 
   &:disabled {
     cursor: not-allowed;
@@ -119,7 +120,7 @@ button,
     background-color: my.palette('disabled', 'foreground');
   }
 
-  p>& {
+  p > & {
     margin-top: my.$gutter;
     margin-right: auto;
     margin-left: auto;

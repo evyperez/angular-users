@@ -6,6 +6,6 @@
   $my-breakpoints: config.$breakpoints,
   $my-font-weights: config.$font-weights,
   $my-gutter: config.$gutter,
-  $my-palette: config.$palette,
+  $my-palette: config.$palette
 );
 @forward 'mixins';

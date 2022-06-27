@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
     private loadingService: LoadingService,
     private searchService: SearchService,
     private paginationService: PaginationService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -60,20 +60,23 @@ export class SearchComponent implements OnInit {
       return;
     }
 
-    if(this.result){
+    if (this.result) {
       this.result.items = null;
     }
 
-    this.loadingService.active = this.searchService.getResult(this.form.value.search, this.perPage, this.page)
-      .pipe(finalize(() => {
-        this.emitResult();
-      }))
+    this.loadingService.active = this.searchService
+      .getResult(this.form.value.search, this.perPage, this.page)
+      .pipe(
+        finalize(() => {
+          this.emitResult();
+        })
+      )
       .subscribe({
         next: (response) => {
           this.result = response;
         },
         error: (error) => {
-          if(!this.result){
+          if (!this.result) {
             this.result = new Result();
           }
           this.result.errorMessage = error.error.message;

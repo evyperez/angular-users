@@ -9,8 +9,5 @@ import { LoadingService } from './shared/preloader/loading.service';
 export class AppComponent {
   title = 'angular-search';
 
-  constructor(
-    public loadingService: LoadingService,
-) { }
+  constructor(public loadingService: LoadingService) {}
 }
-

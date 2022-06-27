@@ -25,7 +25,6 @@ $feedback: 'success', 'warning', 'danger';
   p {
     flex: 1;
   }
-
 }
 
 @mixin validation($feedback) {

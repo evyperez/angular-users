@@ -30,7 +30,6 @@
   }
 }
 
-
 /* User interaction (https://www.w3.org/TR/html5/editing.html)
 ========================================================================== */
 ::selection {
@@ -132,7 +131,6 @@ html {
   }
 }
 
-
 /**
  * 1. Set sticky footer
  * 2. Prevents IE10-11 flex container bug
@@ -148,7 +146,7 @@ body {
   margin: 0;
   background: my.palette('github', 'gray');
 
-  color:  my.palette('github', 'dark-gray');
+  color: my.palette('github', 'dark-gray');
 
   > * {
     flex-shrink: 0; /* 1 */

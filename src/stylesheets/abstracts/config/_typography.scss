@@ -26,9 +26,7 @@
 ///   font-family: $title-font-stack;
 /// }
 ///
-$title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
-  'Helvetica', 'Arial', sans-serif !default;
-
+$title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Text body font stack
 ///
@@ -40,7 +38,6 @@ $title-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
 ///
 $text-font-stack: fs.$NATIVE-FONT-STACK !default;
 
-
 /// Code (monospace) font stack
 ///
 /// @font code-font-stack (normal, bold, italic, bold italic)
@@ -51,14 +48,12 @@ $text-font-stack: fs.$NATIVE-FONT-STACK !default;
 ///
 $code-font-stack: fs.$BASIC-CODE-FONT-STACK !default;
 
-
 /// Body text font-size
 ///
 /// @group config-typography
 /// @type number
 ///
 $body-font-size: 1em !default;
-
 
 /// Typographic modular scale
 ///
@@ -84,7 +79,6 @@ $sizes: ();
 
 @include utilities.add('sizes', 'modular-scale', $sizes);
 
-
 /// Default Leading
 ///
 /// @ratios leading
@@ -93,8 +87,13 @@ $sizes: ();
 ///
 $leading: 1.5 !default;
 
-@include utilities.add('ratios', 'leading', ('leading': $leading));
-
+@include utilities.add(
+  'ratios',
+  'leading',
+  (
+    'leading': $leading,
+  )
+);
 
 /// Flexible leadings map
 ///
@@ -109,11 +108,14 @@ $leadings: (
   'max': 1.5,
 ) !default;
 
-@include utilities.add('ratios', 'flexible-leading', (
-  'minimum leading': map.get($leadings, 'min'),
-  'maximum leading': map.get($leadings, 'max'),
-));
-
+@include utilities.add(
+  'ratios',
+  'flexible-leading',
+  (
+    'minimum leading': map.get($leadings, 'min'),
+    'maximum leading': map.get($leadings, 'max'),
+  )
+);
 
 /// Optimum line lengths
 ///
@@ -127,15 +129,19 @@ $leadings: (
 $line-lengths: (
   'min': 21em,
   'max': 37.5em,
-  'column': 22.5em, // ≅45chars width
+  'column': 22.5em,
+  // ≅45chars width
 ) !default;
 
-@include utilities.add('sizes', 'line-lengths', (
-  'minimum line width': map.get($line-lengths, 'min'),
-  'maximum line width': map.get($line-lengths, 'max'),
-  'column width': map.get($line-lengths, 'column'),
-));
-
+@include utilities.add(
+  'sizes',
+  'line-lengths',
+  (
+    'minimum line width': map.get($line-lengths, 'min'),
+    'maximum line width': map.get($line-lengths, 'max'),
+    'column width': map.get($line-lengths, 'column'),
+  )
+);
 
 /// Font weights map
 ///

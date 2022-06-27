@@ -14,7 +14,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   totalPages: number;
   currentPage: number;
 
-  constructor(private paginationService: PaginationService) { }
+  constructor(private paginationService: PaginationService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!changes?.totalItems?.firstChange && changes?.totalItems) {
@@ -35,7 +35,7 @@ export class PaginationComponent implements OnInit, OnChanges {
       for (let index = 0; index < this.totalPages; index++) {
         this.pages.push(index + 1);
       }
-    } else if (this.currentPage > (this.pagesMaxSize - 2)) {
+    } else if (this.currentPage > this.pagesMaxSize - 2) {
       if (this.currentPage >= this.totalPages - 4) {
         this.pages = [1, -1, this.totalPages - 4, this.totalPages - 3, this.totalPages - 2, this.totalPages - 1, this.totalPages];
       } else {

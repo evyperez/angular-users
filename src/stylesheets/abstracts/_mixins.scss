@@ -14,7 +14,6 @@
 /// @group helpers
 ////
 
-
 /// Gray placeholder image
 ///
 ///
@@ -50,24 +49,22 @@
   $_placeholder-bg__color: rgb(220, 220, 220);
 
   background: linear-gradient(
-    to top left,
-    transparent 0%,
-    transparent calc(50% - 1px),
-    $_placeholder-bg__diagonal 50%,
-    transparent calc(50% + 1px),
-    transparent 100%
-  ), linear-gradient(
-    to top right,
-    transparent 0%,
-    transparent calc(50% - 1px),
-    $_placeholder-bg__diagonal 50%,
-    transparent calc(50% + 1px),
-    transparent 100%
-  ), linear-gradient(
-    to right,
-    $_placeholder-bg__color,
-    $_placeholder-bg__color
-  );
+      to top left,
+      transparent 0%,
+      transparent calc(50% - 1px),
+      $_placeholder-bg__diagonal 50%,
+      transparent calc(50% + 1px),
+      transparent 100%
+    ),
+    linear-gradient(
+      to top right,
+      transparent 0%,
+      transparent calc(50% - 1px),
+      $_placeholder-bg__diagonal 50%,
+      transparent calc(50% + 1px),
+      transparent 100%
+    ),
+    linear-gradient(to right, $_placeholder-bg__color, $_placeholder-bg__color);
 }
 
 /// Grid background image
@@ -97,7 +94,6 @@
     #{list.append($grid-image, (transparent calc(100% - #{c.$gutter}), $color calc(100% - #{c.$gutter}), $color 100%), 'comma')}
   );
 }
-
 
 /// Special style for the _&_ used as a conjunction.
 ///
@@ -414,7 +410,6 @@
     color: inherit;
     text-decoration: inherit;
 
-
     @content;
   }
 }
@@ -532,7 +527,7 @@
 ///   -webkit-line-clamp: 5;
 /// }
 ///
-@mixin truncate ($lines: 1, $leading: c.$leading) {
+@mixin truncate($lines: 1, $leading: c.$leading) {
   display: block;
 
   overflow: hidden;
@@ -549,7 +544,7 @@
 
     max-height: $leading * $lines;
     // stylelint-disable-next-line declaration-colon-space-after
-    overflow:hidden;
+    overflow: hidden;
     // stylelint-disable-next-line declaration-no-important, declaration-block-no-duplicate-properties
     overflow: hidden !important;
 
@@ -691,7 +686,8 @@ $no-viewport: false !default;
     (list.index($fallback-units, 'calc') != null and $no-calc != false) or
     (list.index($fallback-units, 'gradient') != null and $no-gradient != false) or
     (list.index($fallback-units, 'rem') != null and $no-rem != false) or
-    (list.index($fallback-units, 'viewport') != null and $no-viewport != false) {
+    (list.index($fallback-units, 'viewport') != null and $no-viewport != false)
+  {
     #{$property}: #{$fallback-values};
   }
 
@@ -699,7 +695,8 @@ $no-viewport: false !default;
     (list.index($fallback-units, 'calc') != null and $no-calc != true) or
     (list.index($fallback-units, 'gradient') != null and $no-gradient != true) or
     (list.index($fallback-units, 'rem') != null and $no-rem != true) or
-    (list.index($fallback-units, 'viewport') != null and $no-viewport != true) {
+    (list.index($fallback-units, 'viewport') != null and $no-viewport != true)
+  {
     #{$property}: #{$values};
   }
 
@@ -948,7 +945,7 @@ $no-viewport: false !default;
   @media screen and (min-width: #{$line-length-lower-gate * $font-size}) {
     line-height: calc(
       #{$min-line-height * 1em} + (#{$max-line-height} - #{$min-line-height}) * ((100vw - #{$line-length-lower-gate}) /
-      (#{math.div($line-length-upper-gate, 1em)} - #{math.div($line-length-lower-gate, 1em)}))
+            (#{math.div($line-length-upper-gate, 1em)} - #{math.div($line-length-lower-gate, 1em)}))
     );
   }
 
@@ -967,7 +964,6 @@ $no-viewport: false !default;
   box-shadow: 0 0 0 0.25rem, color.scale(rgba(0, 0, 0, 0.774), $alpha: 50%);
   outline: 0;
 }
-
 
 @mixin columns($width: map-get(c.$line-lengths, 'column'), $gap: c.$gutter) {
   @include hyphens;
@@ -1013,7 +1009,7 @@ $no-viewport: false !default;
   }
 }
 
-@mixin inner-border ($width: c.$stroke__thin, $style: solid, $color: currentColor) {
+@mixin inner-border($width: c.$stroke__thin, $style: solid, $color: currentColor) {
   th,
   td {
     + th,
@@ -1029,7 +1025,6 @@ $no-viewport: false !default;
     }
   }
 }
-
 
 /// @link https://alistapart.com/article/quantity-queries-for-css/
 @mixin at-least($n) {
@@ -1083,8 +1078,8 @@ $no-viewport: false !default;
 @mixin odd {
   $last-item: nth(nth(&, 1), length(nth(&, 1)));
 
-  &:nth-last-child(2n+1):first-child,
-  &:nth-last-child(2n+1):first-child ~ #{$last-item} {
+  &:nth-last-child(2n + 1):first-child,
+  &:nth-last-child(2n + 1):first-child ~ #{$last-item} {
     @content;
   }
 }
