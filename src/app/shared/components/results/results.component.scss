@@ -2,35 +2,40 @@
 @use '../../../../stylesheets/abstracts' as my;
 
 .results {
-  background: my.palette('github', 'white');
+  height: 100%;
 
-  & .container {
-    display: grid;
-    row-gap: my.$leading * 1rem;
-    padding-top: #{my.$leading * 2rem};
-    padding-bottom: #{my.$leading * 2rem};
-  }
+  background: my.palette('github', 'white');
+}
+
+.results .container {
+  display: grid;
+
+  row-gap: my.$leading * 1rem;
+
+  padding-top: #{my.$leading * 2rem};
+  padding-bottom: #{my.$leading * 2rem};
 }
 
 .result-item {
   display: grid;
-  /* stylelint-disable-next-line property-no-unknown */
-
-  width: 100%;
 
   row-gap: my.$leading * 1rem;
 
   align-items: center;
 
+  width: 100%;
   padding: my.$leading * 1rem;
 
-  border: 1px dashed black;
   text-align: center;
+
+  border: 1px dashed my.palette('github', 'dark-gray');
 
   @media screen and (min-width: #{map.get(my.$breakpoints, 'toggle-table-layout')}) {
     grid-template-columns: 100px 2fr 1fr;
-    column-gap: my.$leading * 1rem;
+
     row-gap: my.$leading * 2rem;
+    column-gap: my.$leading * 1rem;
+
     text-align: left;
   }
 }
@@ -38,9 +43,9 @@
 .avatar {
   width: 100px;
   height: 100px;
+
   border-radius: 50%;
   object-fit: contain;
-
 
   @media screen and (max-width: #{map.get(my.$breakpoints, 'toggle-table-layout') - 0.01}) {
     width: 150px;

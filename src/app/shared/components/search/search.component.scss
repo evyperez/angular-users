@@ -8,45 +8,42 @@
 }
 
 .container--narrow {
-  padding-top: my.$leading * 2rem;
+  padding-top: 108px;
   padding-bottom: my.$leading * 2rem;
 
   @media screen and (min-width: #{map.get(my.$breakpoints, 'toggle-table-layout')}) {
-    padding-top: my.$leading * 4rem;
+    padding-top: 108px;
     padding-bottom: my.$leading * 4rem;
   }
 }
 
 .search-group {
   position: relative;
+
   max-width: my.$max-width--narrow;
 }
 
-.search--result {
-  & .search-group {
-    position: relative;
-    display: grid;
+.search--result .search-group {
+  position: relative;
 
-    grid-template-columns: 100px 1fr auto;
-    align-items: center;
+  display: grid;
 
-    column-gap: my.$gutter * 0.25;
+  grid-template-columns: 100px 1fr auto;
 
-    .search__image {
-      height: 60px;
-      cursor: pointer;
-    }
+  column-gap: my.$gutter * 0.25;
+
+  align-items: center;
+
+  .search__image {
+    height: 60px;
+
+    cursor: pointer;
   }
 }
 
 .search__image {
   width: 100%;
   height: 160px;
-  // position: absolute;
-  // bottom: 73px;
-  // z-index: 1;
-  // left: 50%;
-  // transform: translateX(-50%);
   margin: auto;
   object-fit: contain;
 }
@@ -56,21 +53,24 @@
 }
 
 .search__buttons {
-  display: inline;
-  align-items: center;
   position: absolute;
   top: 50%;
   right: my.$gutter * 1;
+
+  display: inline;
+
+  align-items: center;
+
   transform: translateY(-50%);
 
-
   button {
-    background: transparent;
-    height: unset;
     width: 28px;
-    padding: 0;
     min-width: unset;
+    height: unset;
+    padding: 0;
     margin-right: my.$leading * 0.25rem;
+
+    background: transparent;
 
     &:last-of-type {
       margin-right: 0;
