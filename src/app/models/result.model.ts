@@ -1,7 +1,8 @@
-export interface Result {
+export class Result {
   total_count: number;
   incomplete_results: boolean;
   items: Array<Items>;
+  errorMessage: string;
 }
 
 interface Items {

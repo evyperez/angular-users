@@ -2,15 +2,17 @@
   <form [formGroup]="form" (ngSubmit)="getResult()" aria-label="Search">
     <div class="container" [class.container--narrow]="!result">
       <div class="search-group">
-        <img src="./assets/images/git-hub-search.svg" (click)="clearResult()" alt="git hub searching something" class="search__image">
+        <img src="./assets/images/git-hub-search.svg" (click)="clearResult()" alt="git hub searching something"
+          class="search__image">
         <div class="input-group">
           <label for="search">
             <input id="search" type="search" name="search" formControlName="search" />
             <div class="search__buttons">
-              <button *ngIf="form.value.search.length > 0" class="search__submit" type="button" (click)="clearInput()" title="clear">
+              <button *ngIf="form?.value?.search?.length > 0" class="search__submit" type="button"
+                (click)="clearInput()" title="clear">
                 <img src="./assets/images/clear.svg" alt="button clear"></button>
-              <button class="search__submit" type="submit" title="submit"><img src="./assets/images/search.svg"
-                  alt="button search"></button>
+              <button [disabled]="form.invalid" class="search__submit" type="submit" title="submit"><img
+                  src="./assets/images/search.svg" alt="button search"></button>
             </div>
           </label>
         </div>

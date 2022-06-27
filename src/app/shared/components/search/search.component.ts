@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { finalize } from 'rxjs';
 import { Result } from 'src/app/models/result.model';
+import { LoadingService } from '../../preloader/loading.service';
+import { PaginationService } from '../../services/pagination/pagination.service';
 import { SearchService } from './search.service';
 
 @Component({
@@ -10,15 +13,26 @@ import { SearchService } from './search.service';
 })
 export class SearchComponent implements OnInit {
   @Output() sendResult = new EventEmitter<Result>();
-  @Input() result: Result;
+  result: Result;
   form: FormGroup;
   perPage = 9;
   page = 1;
 
-  constructor(private fb: FormBuilder, private searchService: SearchService) {}
+  constructor(
+    private fb: FormBuilder,
+    private loadingService: LoadingService,
+    private searchService: SearchService,
+    private paginationService: PaginationService
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
+    this.paginationService.currentPageSubscription.subscribe((value) => {
+      if (value) {
+        this.page = value;
+        this.getResult(true);
+      }
+    });
   }
 
   createForm() {
@@ -33,16 +47,41 @@ export class SearchComponent implements OnInit {
 
   clearResult() {
     this.clearInput();
-    this.sendResult.emit(null);
+    this.result = null;
+    this.emitResult();
   }
 
   getFormValidators(name: string) {
     return this.form?.controls[name];
   }
 
-  getResult() {
-    this.searchService.getResult(this.form.value.search, this.perPage, this.page).subscribe((response) => {
-      this.sendResult.emit(response);
-    });
+  getResult(changePage = false) {
+    if (this.form.invalid && !changePage) {
+      return;
+    }
+
+    if(this.result){
+      this.result.items = null;
+    }
+
+    this.loadingService.active = this.searchService.getResult(this.form.value.search, this.perPage, this.page)
+      .pipe(finalize(() => {
+        this.emitResult();
+      }))
+      .subscribe({
+        next: (response) => {
+          this.result = response;
+        },
+        error: (error) => {
+          if(!this.result){
+            this.result = new Result();
+          }
+          this.result.errorMessage = error.error.message;
+        },
+      });
+  }
+
+  emitResult() {
+    this.sendResult.emit(this.result);
   }
 }

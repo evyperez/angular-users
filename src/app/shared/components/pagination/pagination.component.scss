@@ -1,0 +1,68 @@
+@use 'sass:map';
+@use '../../../../stylesheets/abstracts' as my;
+
+.pagination {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.arrow-text {
+  display: block;
+
+  font-size: 13px;
+}
+
+.page-number {
+  --size: 32px;
+  --margin: 6px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: var(--size);
+  max-width: auto;
+  height: var(--size);
+  padding: 0 6px;
+  margin: 0 var(--margin);
+
+  color: my.palette('github', 'white');
+
+  cursor: pointer;
+
+  background: my.palette('github', 'dark-gray');
+  border-radius: 6px;
+
+  @media (hover: hover) {
+    &:hover {
+      background: darken(my.palette('github', 'dark-gray'), 10%);
+    }
+  }
+
+  &:active {
+    background: darken(my.palette('github', 'dark-gray'), 20%);
+  }
+
+  &--active {
+    position: relative;
+
+    background: darken(my.palette('github', 'dark-gray'), 20%);
+  }
+
+  &:disabled {
+    position: relative;
+
+    color: darken(my.palette('github', 'gray'), 30%);
+
+    cursor: not-allowed;
+
+    background: darken(my.palette('github', 'gray'), 20%);
+  }
+}

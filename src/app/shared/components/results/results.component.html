@@ -11,5 +11,8 @@
         <p title="type">{{item?.type}}</p>
       </div>
     </div>
+
+    <app-pagination *ngIf="result?.total_count > 9" [totalItems]="result?.total_count" [itemsPerPage]="9"></app-pagination>
+
   </div>
 </section>
