@@ -1,3 +1,4 @@
 <main role="main" id="content" class="page">
   <router-outlet></router-outlet>
+  <app-loading *ngIf="loadingService?.active && !loadingService?.active?.closed"></app-loading>
 </main>
