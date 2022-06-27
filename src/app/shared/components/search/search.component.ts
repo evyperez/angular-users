@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { Result } from 'src/app/models/result.model';
-import { LoadingService } from '../../preloader/loading.service';
+import { LoadingService } from '../../loading/loading.service';
 import { PaginationService } from '../../services/pagination/pagination.service';
 import { SearchService } from './search.service';
 

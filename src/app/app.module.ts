@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoadingModule } from './shared/preloader/loading.module';
+import { LoadingModule } from './shared/loading/loading.module';
 
 @NgModule({
   declarations: [AppComponent],
