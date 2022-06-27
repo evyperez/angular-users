@@ -39,9 +39,8 @@ export class PaginationComponent implements OnInit, OnChanges {
       if (this.currentPage >= this.totalPages - 4) {
         this.pages = [1, -1, this.totalPages - 4, this.totalPages - 3, this.totalPages - 2, this.totalPages - 1, this.totalPages];
       } else {
-        this.pages = [1, -1, this.currentPage - 1, this.currentPage, this.currentPage + 1, -1, this.totalPages]
+        this.pages = [1, -1, this.currentPage - 1, this.currentPage, this.currentPage + 1, -1, this.totalPages];
       }
-
     } else {
       this.pages = [1, 2, 3, 4, 5, -1, this.totalPages];
     }
@@ -54,12 +53,11 @@ export class PaginationComponent implements OnInit, OnChanges {
   setPage(page: number, index?: number) {
     this.currentPage = page;
 
-
     if (index && index === 5) {
-      this.currentPage = this.pages[index -1] + 2;
+      this.currentPage = this.pages[index - 1] + 2;
     }
     if (index && index === 1) {
-      this.currentPage = this.pages[index +1] - 2;
+      this.currentPage = this.pages[index + 1] - 2;
     }
 
     this.paginationService.setCurrentPage(this.currentPage);
