@@ -275,3 +275,7 @@ textarea {
 .full-width {
   @include my.full-width;
 }
+
+.text-align--center {
+  text-align: center;
+}
