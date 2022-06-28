@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.0][] - 2022-06-28
+
 ### Added
 
 - Dashboard component
@@ -16,3 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Results component
 - Loading component
 - Pagination component
+
+
+[Unreleased]: https://github.com/evyperez/angular-users/compare/v0.0.0...HEAD
+[0.0.0]: https://github.com/evyperez/angular-users/tree/v0.0.0
