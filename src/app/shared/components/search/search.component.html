@@ -6,7 +6,7 @@
           class="search__image">
         <div class="input-group">
           <label for="search">
-            <input id="search" type="search" name="search" placeholder="search users" formControlName="search" />
+            <input id="search" type="search" name="search" placeholder="search usernames" formControlName="search" />
             <div class="search__buttons">
               <button *ngIf="form?.value?.search?.length > 0" class="search__clear" type="button"
                 (click)="clearInput()" title="clear">

@@ -52,3 +52,9 @@
     height: 150px;
   }
 }
+
+.select-group {
+  @media screen and (min-width: #{map.get(my.$breakpoints, 'toggle-table-layout')}) {
+    max-width: 50%;
+  }
+}
