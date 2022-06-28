@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Result } from 'src/app/models/result.model';
-import { PaginationService } from '../../services/pagination/pagination.service';
 
 @Component({
   selector: 'app-results',
@@ -27,6 +26,10 @@ export class ResultsComponent implements OnInit, OnChanges {
    }
 
   sort() {
+    if(!this.result || !this.result?.items || this.result?.items?.length < 2){
+      return;
+    }
+
     const sortCategory = this.sortUsers.split('_')[0];
     const sortOrderby =this.sortUsers.split('_')[1];
 

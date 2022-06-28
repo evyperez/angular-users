@@ -58,6 +58,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ng-mocks": "^14.0.1",
     "prettier": "^2.7.1",
     "sass": "^1.53.0",
     "sassdoc": "^2.7.4",

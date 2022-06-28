@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [ResultsComponent],
   exports: [ResultsComponent],
-  imports: [CommonModule, PaginationModule, FormsModule,
-  ],
+  imports: [CommonModule, PaginationModule, FormsModule],
 })
 export class ResultsModule { }

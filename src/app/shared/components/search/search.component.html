@@ -8,7 +8,7 @@
           <label for="search">
             <input id="search" type="search" name="search" placeholder="search users" formControlName="search" />
             <div class="search__buttons">
-              <button *ngIf="form?.value?.search?.length > 0" class="search__submit" type="button"
+              <button *ngIf="form?.value?.search?.length > 0" class="search__clear" type="button"
                 (click)="clearInput()" title="clear">
                 <img src="./assets/images/clear.svg" alt="button clear"></button>
               <button [disabled]="form.invalid" class="search__submit" type="submit" title="submit"><img

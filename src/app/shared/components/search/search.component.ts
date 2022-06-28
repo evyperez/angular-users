@@ -77,7 +77,7 @@ export class SearchComponent implements OnInit {
         },
         error: (error) => {
           if (!this.result) {
-            this.result = new Result();
+            this.result = new Result(null);
           }
           this.result.errorMessage = error.error.message;
         },

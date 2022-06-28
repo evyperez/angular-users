@@ -8,14 +8,12 @@ import { Result } from 'src/app/models/result.model';
 })
 export class DashboardComponent implements OnInit {
   result: Result;
-  hasResult: boolean;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  setResult(event) {
+  setResult(event: Result) {
     this.result = event;
-    this.hasResult = true;
   }
 }

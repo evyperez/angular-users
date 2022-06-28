@@ -2,7 +2,14 @@ export class Result {
   total_count: number;
   incomplete_results: boolean;
   items: Array<Items>;
-  errorMessage: string;
+  errorMessage?: string;
+
+  constructor(result: Result) {
+    this.total_count = result?.total_count;
+    this.incomplete_results = result?.incomplete_results;
+    this.items = result?.items;
+    this.errorMessage = result?.errorMessage;
+  }
 }
 
 interface Items {
