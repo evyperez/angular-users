@@ -1,5 +1,27 @@
 <section *ngIf="result" class="results">
   <div class="container">
+
+    <div *ngIf="result?.items?.length > 0">
+      <label for="sortUsers">
+        Sort
+      </label>
+
+      <select id="sortUsers" [(ngModel)]="sortUsers" (change)="sort()">
+        <option [value]="'login_asc'">
+          Login
+        </option>
+        <option [value]="'login_desc'">
+          Login Descendent
+        </option>
+        <option [value]="'type'">
+          Type
+        </option>
+        <option [value]="'type_desc'">
+          Type Descendent
+        </option>
+      </select>
+    </div>
+
     <h2 *ngIf="result?.total_count === 0 || result?.items?.length === 0" class="text-align--center">
       <strong>
         Your search did not match any user.

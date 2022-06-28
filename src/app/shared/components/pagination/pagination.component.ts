@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { PaginationService } from '../../services/pagination/pagination.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   constructor(private paginationService: PaginationService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!changes?.totalItems?.firstChange && changes?.totalItems) {
+    if (!changes?.totalItems?.firstChange) {
       this.setPages();
     }
   }

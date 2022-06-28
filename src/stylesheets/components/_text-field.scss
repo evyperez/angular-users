@@ -95,18 +95,12 @@
     @include my.focused;
   }
 
-  &:focus:required:invalid {
-  }
-
-  ~ small {
-  }
-
   &:read-only {
-    color: my.palette('disabled', 'foreground');
+    color: my.palette('github', 'dark-gray');
 
     cursor: default;
 
-    background-color: my.palette('disabled', 'background');
+    background-color: my.palette('github', 'white');
   }
 }
 
