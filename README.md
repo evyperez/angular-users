@@ -6,6 +6,8 @@ You can search GitBub users by username, but GitHub only allows viewing of the f
 
 On results page, you can sort the results by login or type, in descending or ascending order.
 
+You can see the aplication on [Netlify](https://glittering-lebkuchen-c5d15e.netlify.app/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
 ## Development server
