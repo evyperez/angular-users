@@ -1,0 +1,25 @@
+<div class="pagination">
+  <button class="page-number" [disabled]="currentPage === 1" (click)="setPage(currentPage - 1)">
+    <img src="./assets/images/arrow.svg" class="arrow-left" alt="previous">
+  </button>
+
+  <ng-container *ngFor="let page of pages; trackBy: trackByFn; let i = index">
+
+    <button *ngIf="page === -1" class="page-number"
+      [class.page-number--active]="currentPage === page" (click)="setPage(page, i)">
+      ...
+    </button>
+
+    <button *ngIf="page !== -1" title=" Page {{page}}" class="page-number"
+      [class.page-number--active]="currentPage === page" (click)="setPage(page)">
+      {{page}}
+    </button>
+
+  </ng-container>
+
+  <button class="page-number arrow" [disabled]="currentPage === totalPages"
+    (click)="setPage(currentPage + 1)">
+    <img src="./assets/images/arrow.svg" alt="next">
+  </button>
+</div>
+
