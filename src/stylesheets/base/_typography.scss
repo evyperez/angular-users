@@ -292,69 +292,6 @@ var {
   font-style: italic;
 }
 
-/* text edition
-============================================================================ */
-del,
-s {
-  text-decoration: line-through;
-}
-
-s {
-  font-style: italic;
-}
-
-%updated {
-  &::before {
-    font-weight: my.font-weight('bold');
-    text-decoration: none;
-
-    content: '[update] ';
-  }
-
-  &[datetime]::before {
-    content: '[update\00A0\2192\00A0'attr(datetime) '] ';
-  }
-
-  &::after {
-    text-decoration: none;
-
-    content: ' [/update] ';
-  }
-}
-
-ins {
-  @extend %updated;
-
-  text-decoration: underline;
-
-  &:lang(pt)::before {
-    content: ' [inserido] ';
-  }
-
-  &[datetime]:lang(pt)::before {
-    content: ' [inserido\00A0\2192\00A0'attr(datetime) '] ';
-  }
-
-  &:lang(pt)::after {
-    content: ' [/inserido] ';
-  }
-}
-
-del {
-  @extend %updated;
-
-  &:lang(pt)::before {
-    content: ' [excluído] ';
-  }
-
-  &[datetime]:lang(pt)::before {
-    content: ' [excluído\00A0\2192\00A0'attr(datetime) '] ';
-  }
-
-  &:lang(pt)::after {
-    content: ' [/excluído] ';
-  }
-}
 
 /* quotes
 ============================================================================ */
