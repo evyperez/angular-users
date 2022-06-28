@@ -21,7 +21,9 @@ export class ResultsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.sort();
+    if(this.result){
+      this.sort();
+    }
    }
 
   sort() {
