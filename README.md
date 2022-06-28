@@ -1,4 +1,10 @@
-# AngularSearch
+# Search GitHub Users
+
+This web application is an example of how to make a request in API with pagination and sort.
+
+You can search GitBub users by username, but GitHub only allows viewing of the first 1000 results and an error  should be displayed when this happens. GitHub also has I.P fetch limit, if this happens wait a few minutes and try again.
+
+On results page, you can sort the results by login or type, in descending or ascending order.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
